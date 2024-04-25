@@ -7,12 +7,14 @@ let employeesArray = [];
 const collectEmployees = function() {
   // TODO: Get user input to create and return an array of employee objects
 
+  // Asks the user for the first employees information
   employeesArray.push({
     firstName: prompt("Please enter the persons first name: "),
     lastName: prompt("Please enter the persons last name: "),
     salary: prompt("Please enter their salary: ")
   });  
 
+  // Asks for additional employee information as long as the user keeps confirming that they want to add more employees to the list.
   while(window.confirm("Would you like to add another employee?")){
     employeesArray.push({
       firstName: prompt("Please enter their first name: "),
@@ -21,6 +23,7 @@ const collectEmployees = function() {
     });
   }
 
+  // This function returns a filled out array of employee objects once the user is finished adding them to the list.
   return employeesArray;
 
 }
@@ -29,12 +32,14 @@ const collectEmployees = function() {
 const displayAverageSalary = function(employeesArray) {
   // TODO: Calculate and display the average salary
   
+  // Starts the total salary sum to 0 and the loop converts all number strings in the array into numbers and then sums it all up into salarySum.
   let salarySum = 0;
 
   for (let i = 0; i < employeesArray.length; i++){
     salarySum += +employeesArray[i].salary;
   }
 
+  // Uses salarySum and the length of the employee object array to get an average of the salaries of the employees and utilizes the Math.floor() method to cut out digits beyond the hundreth decimal place to represent how currency is displayed then displays it to the user.
   let average = Math.floor((salarySum/employeesArray.length)*100)/100;
   console.log("The average employee salary between our", employeesArray.length, "employee(s) is: $", average);
 
@@ -44,6 +49,7 @@ const displayAverageSalary = function(employeesArray) {
 const getRandomEmployee = function(employeesArray) {
   // TODO: Select and display a random employee
 
+  // Utilizes the Math.rand() method to obtain a random user in the employee object array and displays it to the user.
   let employee = employeesArray[Math.floor(Math.random()*employeesArray.length)];
   console.log("Congratulations to...", employee.firstName, employee.lastName, "our random drawing winner!");
 
